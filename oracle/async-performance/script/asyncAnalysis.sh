@@ -43,7 +43,24 @@ join /tmp/$T7 $T8 >/tmp/$T8
 
 cp /tmp/$T8 $TSUM
 
-
+#  list fields as time order
+#
+# $1: messageID
+# $2: AysncServiceRuntimeDelegate.received msg
+# $3: AysncServiceRuntimeDelegate.send msg to Request Queue
+# $6: enter Request MDB onMessage
+# $7: exit Request MDB onMessage
+# $8: enter Response MDB onMessage
+# $4: NonAnonymouseResponseHandler.received msg
+# $5: NonAnonymouseResponseHandler.finish msg
+# $9: exit Response MDB onMessage
+# 
+# $3-$2: AsyncServiceRuntimeDelagte process the msg 
+# $6-$3: message hold by request queue
+# $7-$6: message hold by request MDB
+# $8-$7: message hold by response queue
+# $9-$8: message hold by response MDB ( include invocation of callback
+# $9-$2: message hold by server side
 awk '{printf("%s %7d %7d %7d %7d %7d %7d\n",$1,$3-$2 ,$6-$3,$7-$6,$8-$7,$9-$8,$9-$2)}' $TSUM > $TSUM2
 #awk '{printf("%s %7d %7d %7d %7d %7d %7d %7d\n",$1,$3-$2 ,$4-$3,$5-$4,$6-$5,$7-$6,$8-$7,$9-$8)}' $TSUM > $TSUM2
 
