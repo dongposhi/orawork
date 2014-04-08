@@ -1,5 +1,11 @@
 #!/bin/bash
-SOURCE_FILE=/scratch/doshi/workspace/1214/itest/jrf-ws-qa-tests/target/wsDomain/jrfServer_admin.out
+if [ "$#" -eq "0" ]; then
+    SOURCE_FILE=/scratch/doshi/workspace/1214/itest/jrf-ws-qa-tests/target/wsDomain/jrfServer_admin.out
+else
+    SOURCE_FILE=$1
+fi
+
+echo "target file is " + ${SOURCE_FILE}
 
 T1=a1
 T2=a2
