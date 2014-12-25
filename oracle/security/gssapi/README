@@ -1,0 +1,5 @@
+The case is to verify GSSAPI
+
+NOTE:
+    for client side and server side, they cannot share a same keytab file, so I separate them as my_keytab for client and my2_keytab for server.
+

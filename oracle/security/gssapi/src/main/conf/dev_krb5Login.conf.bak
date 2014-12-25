@@ -1,0 +1,13 @@
+com.sun.security.jgss.initiate {
+  com.sun.security.auth.module.Krb5LoginModule optional principal="doshi@DEV.ORACLE.COM" useKeyTab=true keyTab=my_keytab storeKey=true debug=true isInitiator=true;
+  com.sun.security.auth.module.Krb5LoginModule optional principal="linguo@DEV.ORACLE.COM" useKeyTab=true keyTab=my_keytab storeKey=true debug=true isInitiator=true;
+  com.sun.security.auth.module.Krb5LoginModule optional principal="negotiatetestserver@SECURITYQA.COM" useKeyTab=true keyTab=negotiatetestserver_keytab storeKey=true debug=true isInitiator=true;
+
+};
+
+com.sun.security.jgss.krb5.accept {
+  com.sun.security.auth.module.Krb5LoginModule optional principal="doshi@DEV.ORACLE.COM"  debug=true isInitiator=false;
+  com.sun.security.auth.module.Krb5LoginModule optional principal="linguo@DEV.ORACLE.COM" useKeyTab=true keyTab=my_keytab storeKey=true debug=true isInitiator=false;
+  com.sun.security.auth.module.Krb5LoginModule optional principal="negotiatetestserver@SECURITYQA.COM" useKeyTab=true keyTab=negotiatetestserver_keytab storeKey=true debug=true isInitiator=false;
+};
+
