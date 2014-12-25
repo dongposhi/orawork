@@ -36,7 +36,7 @@ grep 'NonAnonymouse' $SOURCE_FILE |grep 'send ' |sed 's/.*\(messageId=.*\) on \(
 grep MDB $SOURCE_FILE | grep equest| grep receive|sed 's/.*message (\(.*\)) on \(.*\)/messageId=\1) \2/'|sort  > $T5
 grep MDB $SOURCE_FILE | grep equest| grep finish|sed 's/.*message (\(.*\)) on \(.*\)/messageId=\1) \2/'|sort  > $T6
 
-grep MDB $SOURCE_FILE | grep esponse| grep receive|sed 's/.*message (\(.*\)) on \(.*\)/messageId=\1) \2/'|sort  > $T7
+grep MDB $SOURCE_FILE | grep esponse| grep receive|sed 's/.*message (\(.*\)) on \(.*\)/messageId=\1) \2/'|sort|grep -v @sdp  > $T7
 grep MDB $SOURCE_FILE | grep esponse| grep finish|sed 's/.*message (\(.*\)) on \(.*\)/messageId=\1) \2/'|sort  > $T8
 
 join $T1 $T2 >/tmp/$T2
@@ -67,7 +67,7 @@ cp /tmp/$T8 $TSUM
 # $8-$7: message hold by response queue
 # $9-$8: message hold by response MDB ( include invocation of callback
 # $9-$2: message hold by server side
-awk '{printf("%s %7d %7d %7d %7d %7d %7d\n",$1,$3-$2 ,$6-$3,$7-$6,$8-$7,$9-$8,$9-$2)}' $TSUM > $TSUM2
+awk '{printf("%s %7d %7d %7d %7d %7d %7d %7d\n",$1,$3-$2 ,$6-$3,$7-$6,$8-$7,$9-$8,$9-$2,$5-$4)}' $TSUM > $TSUM2
 #awk '{printf("%s %7d %7d %7d %7d %7d %7d %7d\n",$1,$3-$2 ,$4-$3,$5-$4,$6-$5,$7-$6,$8-$7,$9-$8)}' $TSUM > $TSUM2
 
 rm /tmp/$T2 /tmp/$T3 /tmp/$T4 /tmp/$T5 /tmp/$T6 /tmp/$T7 /tmp/$T8

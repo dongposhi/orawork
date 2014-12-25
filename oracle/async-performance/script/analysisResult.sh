@@ -1,7 +1,7 @@
 #!/bin/bash
 
-INSTANCES="10 20 30 40 50 60 70 80 90"
-THREADS="10 30 50 70 90 110 130 150 170"
+INSTANCES="aq"
+THREADS="10 30 50 70 90 110 130"
 
 sum=ax
 echo "threads" > ${sum}
