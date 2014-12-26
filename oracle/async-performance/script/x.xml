@@ -1,0 +1,43 @@
+<weblogic-ejb-jar xmlns="http://www.bea.com/ns/weblogic/10.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.bea.com/ns/weblogic/10.0 http://www.bea.com/ns/weblogic/10.0/weblogic-ejb-jar.xsd">
+  <weblogic-enterprise-bean>
+    <ejb-name>AsyncEjbService_AsyncRequestProcessorMDB</ejb-name>
+    <message-driven-descriptor>
+      <pool>
+        <initial-beans-in-free-pool>$INSTANCES$</initial-beans-in-free-pool>
+        <max-beans-in-free-pool>$INSTANCES$</max-beans-in-free-pool>
+      </pool>
+      <destination-jndi-name>oracle.j2ee.ws.server.async.NonDefaultRequestQueue</destination-jndi-name>
+      <connection-factory-jndi-name>weblogic.jms.XAConnectionFactory</connection-factory-jndi-name>
+    </message-driven-descriptor>
+    <dispatch-policy>WM1</dispatch-policy>
+    <jndi-name>AsyncEjbService_AsyncRequestProcessorMDB</jndi-name>
+    <run-as-principal-name>weblogic</run-as-principal-name>
+  </weblogic-enterprise-bean>
+  <weblogic-enterprise-bean>
+    <ejb-name>AsyncEjbService_AsyncResponseProcessorMDB</ejb-name>
+    <message-driven-descriptor>
+      <pool>
+        <initial-beans-in-free-pool>$INSTANCES$</initial-beans-in-free-pool>
+        <max-beans-in-free-pool>$INSTANCES$</max-beans-in-free-pool>
+      </pool>
+      <destination-jndi-name>oracle.j2ee.ws.server.async.NonDefaultResponseQueue</destination-jndi-name>
+      <connection-factory-jndi-name>weblogic.jms.XAConnectionFactory</connection-factory-jndi-name>
+    </message-driven-descriptor>
+    <dispatch-policy>WM1</dispatch-policy>
+    <jndi-name>AsyncEjbService_AsyncResponseProcessorMDB</jndi-name>
+    <run-as-principal-name>weblogic</run-as-principal-name>
+  </weblogic-enterprise-bean>
+
+  <work-manager>
+      <name>WM1</name>
+      <min-threads-constraint>
+          <name>wm1_mintc1</name>
+          <count>100</count>
+      </min-threads-constraint>
+      <max-threads-constraint>
+          <name>wm1_maxtc1</name>
+          <count>100</count>
+      </max-threads-constraint>
+  </work-manager>
+</weblogic-ejb-jar>
